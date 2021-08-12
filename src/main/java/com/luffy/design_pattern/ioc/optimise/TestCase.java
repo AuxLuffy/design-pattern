@@ -15,14 +15,8 @@ public abstract class TestCase {
         }
     }
 
-    static {
-        JunitApplication.register(new UserTest());
-    }
-
     /**
      * 测试代码
-     *
-     * @return
      */
     protected abstract boolean doTest();
 }
