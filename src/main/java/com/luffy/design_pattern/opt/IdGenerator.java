@@ -1,7 +1,7 @@
 package com.luffy.design_pattern.opt;
 
 
-import com.luffy.design_pattern.opt.refractor.RandomIdGenerator;
+import com.RandomIdGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

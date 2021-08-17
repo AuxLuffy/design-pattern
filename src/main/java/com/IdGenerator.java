@@ -1,4 +1,4 @@
-package com.luffy.design_pattern.opt.refractor;
+package com;
 
 /**
  * id生成器
@@ -7,5 +7,5 @@ package com.luffy.design_pattern.opt.refractor;
  * @since 2021/8/12 2:29 下午
  */
 public interface IdGenerator {
-    String generate();
+    String generate() throws IdGenerationFailureException;
 }

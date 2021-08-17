@@ -1,5 +1,4 @@
-package com.luffy.design_pattern.opt.refractor;
-
+import com.RandomIdGenerator;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

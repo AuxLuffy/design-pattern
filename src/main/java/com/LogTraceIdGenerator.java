@@ -1,4 +1,4 @@
-package com.luffy.design_pattern.opt.refractor;
+package com;
 
 /**
  * 日志id生成器

@@ -1,4 +1,4 @@
-package com.luffy.design_pattern.opt.refractor;
+package com;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.luffy.design_pattern.opt.IdGenerator;
@@ -60,8 +60,13 @@ public class RandomIdGenerator implements LogTraceIdGenerator {
      * @return the random ID, pattern like {hostname}-{timestamp}-{randomstring} (for example: local-230920239019-a28IKo23)
      */
     @Override
-    public String generate() {
-        String substrHostName = getLastFieldOfHostName();
+    public String generate() throws IdGenerationFailureException {
+        String substrHostName = null;
+        try {
+            substrHostName = getLastFieldOfHostName();
+        } catch (UnknownHostException e) {
+            throw new IdGenerationFailureException("host name is empty.");
+        }
         long currentTimeMillis = System.currentTimeMillis();
         String randomString = generateRandomAlphameric(8);
         return String.format("%s-%d-%s", substrHostName, currentTimeMillis, randomString);
@@ -72,10 +77,13 @@ public class RandomIdGenerator implements LogTraceIdGenerator {
      *
      * @return the last field of hostname. returns null if hostname is not obtained
      */
-    private String getLastFieldOfHostName() {
+    private String getLastFieldOfHostName() throws UnknownHostException {
         String subHostName = null;
         try {
             String hostName = InetAddress.getLocalHost().getHostName();
+            if (hostName == null || hostName.isEmpty()) {
+                throw new UnknownHostException("failed to get host name");
+            }
             subHostName = getLastSubstrSplitByDot(hostName);
         } catch (UnknownHostException e) {
             logger.warn("Unknown host", e);
@@ -106,6 +114,9 @@ public class RandomIdGenerator implements LogTraceIdGenerator {
      */
     @VisibleForTesting
     public String generateRandomAlphameric(int length) {
+        if (length <= 0) {
+            throw new IllegalArgumentException("the length should not be 0 or less than 0");
+        }
         char[] randomChars = new char[length];
         int count = 0;
         while (count < length) {
