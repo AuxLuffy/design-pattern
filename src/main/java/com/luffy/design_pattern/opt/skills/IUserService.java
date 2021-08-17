@@ -1,4 +1,4 @@
-package com.luffy.design_pattern.refractor.skills;
+package com.luffy.design_pattern.opt.skills;
 
 import org.apache.commons.lang3.StringUtils;
 

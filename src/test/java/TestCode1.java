@@ -1,4 +1,4 @@
-import com.luffy.design_pattern.refractor.Text;
+import com.luffy.design_pattern.opt.skills.Text;
 import org.junit.Test;
 
 import java.net.InetAddress;

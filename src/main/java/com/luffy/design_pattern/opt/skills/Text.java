@@ -1,4 +1,4 @@
-package com.luffy.design_pattern.refractor;
+package com.luffy.design_pattern.opt.skills;
 
 /**
  * 单元测试

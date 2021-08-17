@@ -1,4 +1,4 @@
-package com.luffy.design_pattern.refractor.skills;
+package com.luffy.design_pattern.opt.skills;
 
 import java.util.Calendar;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package com.luffy.design_pattern.refractor.skills;
+package com.luffy.design_pattern.opt.skills;
 
 /**
  * 订单bean类
