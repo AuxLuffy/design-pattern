@@ -54,6 +54,7 @@ public class IdGenerator {
 //        testLog();
         System.out.println(generate());
         RandomIdGenerator generator = new RandomIdGenerator();
+        generator.generate();
         System.out.println(generator.generateRandomAlphameric(9));
     }
 

@@ -1,4 +1,4 @@
-package com.luffy.design_pattern.apm.opt;
+package com.luffy.design_pattern.apm.opt.view;
 
 /**
  * 邮件发送

@@ -1,4 +1,4 @@
-package com.luffy.design_pattern.apm.opt;
+package com.luffy.design_pattern.apm.opt.bean;
 
 /**
  * 采集器收集到的原始信息
