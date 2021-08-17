@@ -7,7 +7,7 @@ package com.luffy.design_pattern.opt.skills;
  * @since 2021/8/10 2:11 下午
  */
 public class Text {
-    private String content;
+    private final String content;
 
     public Text(String content) {
         this.content = content;
@@ -19,14 +19,13 @@ public class Text {
         }
         String temp = content.trim();
         try {
-            int i = Integer.parseInt(temp);
-            return i;
-        } catch (Exception e) {
+            return Integer.parseInt(temp);
+        } catch (Exception ignored) {
         }
         return null;
     }
 
-    public class ClassName {
+    public static class ClassName {
         public void foo() {
             // method body
         }

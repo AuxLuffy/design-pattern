@@ -8,41 +8,41 @@ import org.slf4j.LoggerFactory;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-/**
- * 随机id生成器
- * <p>
- * 一、提高代码的可读性
- * <p>
- * 1. 把类改成面向接口的，实现自接口，并在类名上做可扩展重命名，以id生成的机制来命名，随机id生成器，为以后递增的id生成器作预留
- * <p>
- * 2. 把id的三个部分拆成三个部分，抽到三个变量后分别获取
- * <p>
- * 3. 将随机数生成的代码中不可读的判断条件拆成变量来说明代码表示的意思
- * <p>
- * 4. 将获取hostname的前后两种不同意义的hostname分开命名
- * <p>
- * 二、提高代码的可测试性
- * <p>
- * 1. 将代码由静态代码改为实现接口，面向接口而非实现，第一步已完成
- * <p>
- * 2. generate方法代码实现依赖运行环境（本机名）、时间函数、随机函数，所以其本身可测试性不好，可以把依赖项单独抽出来，将getLastFieldOfHostName方法中的分隔字段的实现抽成getLastSubstrSplitByDot函数，
- * 因为getLastFieldOfHostName函数依赖本地主机名，所以剥离出主要代码后这个函数变得非常简单，可以不用测试，我们只需要重点测试getLastSubstrSplitByDot即可
- * <p>
- * 三、 编写完善的单元测试
- * <p>
- * 将能测试的功能都抽离出来成单独方法，和非可测试代码分离出来
- * <p>
- * 四、添加注释
- * <p>
- * 注释中主要写清楚：做什么、为什么、怎么做、怎么用，
- * 对一些边界条件、特殊情况进行说明，以及对输入、输出、异常进行说明
- * <p>
- * <p>
- * alphameric 字母数字的 == alphanumeric
- * <p>
- * Delimiter 分隔符
- *
- * @author sunzhangfei
+/*
+  随机id生成器
+  <p>
+  一、提高代码的可读性
+  <p>
+  1. 把类改成面向接口的，实现自接口，并在类名上做可扩展重命名，以id生成的机制来命名，随机id生成器，为以后递增的id生成器作预留
+  <p>
+  2. 把id的三个部分拆成三个部分，抽到三个变量后分别获取
+  <p>
+  3. 将随机数生成的代码中不可读的判断条件拆成变量来说明代码表示的意思
+  <p>
+  4. 将获取hostname的前后两种不同意义的hostname分开命名
+  <p>
+  二、提高代码的可测试性
+  <p>
+  1. 将代码由静态代码改为实现接口，面向接口而非实现，第一步已完成
+  <p>
+  2. generate方法代码实现依赖运行环境（本机名）、时间函数、随机函数，所以其本身可测试性不好，可以把依赖项单独抽出来，将getLastFieldOfHostName方法中的分隔字段的实现抽成getLastSubstrSplitByDot函数，
+  因为getLastFieldOfHostName函数依赖本地主机名，所以剥离出主要代码后这个函数变得非常简单，可以不用测试，我们只需要重点测试getLastSubstrSplitByDot即可
+  <p>
+  三、 编写完善的单元测试
+  <p>
+  将能测试的功能都抽离出来成单独方法，和非可测试代码分离出来
+  <p>
+  四、添加注释
+  <p>
+  注释中主要写清楚：做什么、为什么、怎么做、怎么用，
+  对一些边界条件、特殊情况进行说明，以及对输入、输出、异常进行说明
+  <p>
+  <p>
+  alphameric 字母数字的 == alphanumeric
+  <p>
+  Delimiter 分隔符
+
+  @author sunzhangfei
  * @since 2021/8/12 2:35 下午
  */
 
@@ -84,13 +84,16 @@ public class RandomIdGenerator implements LogTraceIdGenerator {
     }
 
     /**
-     * Get the last field of {@hostname} split by delimiter '.'
+     * Get the last field of {@hostName} split by delimiter '.'
      *
      * @param hostName should not be null
-     * @return the last field of {@hostname}. return empty string if {@hostname} is empty
+     * @return the last field of {@hostName}. return empty string if {@hostName} is empty
      */
     @VisibleForTesting
     public String getLastSubstrSplitByDot(String hostName) {
+        if (hostName == null || hostName.isEmpty()) {
+            throw new IllegalArgumentException("hostName param should not be null");
+        }
         String[] tokens = hostName.split("\\.");
         return tokens[tokens.length - 1];
     }
