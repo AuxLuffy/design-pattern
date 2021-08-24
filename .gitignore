@@ -41,6 +41,9 @@
 # Mobile Tools for Java (J2ME),忽略[.mtj.tmp/]目录及其子文件.
 .mtj.tmp/
 
+# mac文件系统文件
+*.DS_Store
+
 # 打包文件,忽略所有以[.jar]或[.war]或[.nar]或[.ear]或[.zip]或[.tar.gz]或[rar]结尾的文件.
 gradle-wrapper.jar
 *.war
