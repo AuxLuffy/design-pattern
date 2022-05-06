@@ -40,7 +40,7 @@ public class Demo {
         collector.recordRequest(new RequestInfo("login", 236L, 1054564L));
         collector.recordRequest(new RequestInfo("login", 238L, 1758554L));
         try {
-            Thread.sleep(100000);
+            Thread.sleep(1);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

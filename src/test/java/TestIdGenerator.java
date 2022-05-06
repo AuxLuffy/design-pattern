@@ -1,4 +1,4 @@
-import com.RandomIdGenerator;
+import com.luffy.design_pattern.id.RandomIdGenerator;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

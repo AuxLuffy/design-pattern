@@ -7,6 +7,7 @@ import com.luffy.design_pattern.apm.opt.bean.RequestStat;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
@@ -26,6 +27,7 @@ public class ConsoleReporter {
         this.metricsStorage = metricsStorage;
         this.aggregator = aggregator;
         this.statViewer = statViewer;
+        executor = Executors.newSingleThreadScheduledExecutor();
     }
 
     /**

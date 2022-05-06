@@ -1,4 +1,4 @@
-package com.luffy.design_pattern.wallet.anemic.controller;
+package com.luffy.design_pattern.common;
 
 /**
  * @author sunzhangfei

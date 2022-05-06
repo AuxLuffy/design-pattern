@@ -11,7 +11,7 @@ import java.util.Date;
 public class Logutil {
 
 
-    public void log(String content) {
+    public static void log(String content) {
         System.out.println(getLogHeader() + ": " + content);
     }
 

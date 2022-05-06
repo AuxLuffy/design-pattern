@@ -1,4 +1,4 @@
-package com;
+package com.luffy.design_pattern.id;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.luffy.design_pattern.opt.IdGenerator;

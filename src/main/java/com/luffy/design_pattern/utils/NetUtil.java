@@ -1,6 +1,5 @@
 package com.luffy.design_pattern.utils;
 
-import com.luffy.design_pattern.opt.Logutil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package com;
+package com.luffy.design_pattern.id;
 
 /**
  * @author sunzhangfei

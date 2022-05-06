@@ -1,4 +1,4 @@
-package com;
+package com.luffy.design_pattern.id;
 
 /**
  * 日志id生成器
