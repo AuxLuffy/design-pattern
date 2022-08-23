@@ -9,7 +9,7 @@ package com.luffy.design_pattern.apm.opt.bean;
 public class RequestInfo {
     private final String apiName;
     private Long responseTime = 0L;
-    private Long timeStamp = 0L;
+    private Long startTimeStamp = 0L;
 
     public RequestInfo(String apiName) {
         this.apiName = apiName;
@@ -18,7 +18,7 @@ public class RequestInfo {
     public RequestInfo(String apiName, Long responseTime, Long timeStamp) {
         this.apiName = apiName;
         this.responseTime = responseTime;
-        this.timeStamp = timeStamp;
+        this.startTimeStamp = timeStamp;
     }
 
     public Long getResponseTime() {
@@ -29,12 +29,12 @@ public class RequestInfo {
         this.responseTime = responseTime;
     }
 
-    public Long getTimeStamp() {
-        return timeStamp;
+    public Long getStartTimeStamp() {
+        return startTimeStamp;
     }
 
-    public void setTimeStamp(Long timeStamp) {
-        this.timeStamp = timeStamp;
+    public void setStartTimeStamp(Long startTimeStamp) {
+        this.startTimeStamp = startTimeStamp;
     }
 
     public String getApiName() {
