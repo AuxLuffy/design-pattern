@@ -2,12 +2,11 @@ package com.luffy.design_pattern.common;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowCallbackHandler;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.RowMapperResultSetExtractor;
+import org.springframework.jdbc.core.*;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -40,8 +39,16 @@ public class JdbcTemplateStorage implements IUserStorable {
 
     @Override
     public UserVo queryUser(String cellphone) {
-        String sql = "select * from demo.table1 where cellphone=" + cellphone;
-        return jdbcTemplate.query(sql, new UserRowMapper()).get(0);
+        String sql = "select * from demo.table1 where cellphone=?";
+        return jdbcTemplate.query(new PreparedStatementCreator() {
+            @Override
+            public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+                PreparedStatement ps = con.prepareStatement(sql);
+                ps.setString(1, cellphone);
+                return ps;
+            }
+        }, new UserRowMapper()).get(0);
+//        return jdbcTemplate.query(sql, new UserRowMapper()).get(0);
     }
 
     @Override
