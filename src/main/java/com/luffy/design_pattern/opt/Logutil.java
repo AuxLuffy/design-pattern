@@ -1,5 +1,9 @@
 package com.luffy.design_pattern.opt;
 
+import com.luffy.design_pattern.common.UserStorage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.lang.management.ManagementFactory;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -10,9 +14,14 @@ import java.util.Date;
  */
 public class Logutil {
 
+    static Logger L = LoggerFactory.getLogger("NA");
 
-    public static void log(String content) {
-        System.out.println(getLogHeader() + ": " + content);
+    public static void d(String content) {
+        L.debug(getLogHeader() + ": " + content);
+    }
+
+    public static void e(String content) {
+        L.error(getLogHeader() + ": " + content);
     }
 
     private static String getLogHeader() {
@@ -30,7 +39,8 @@ public class Logutil {
         }
         int lineNumber = stackTrace[index].getLineNumber();
         String methodName = stackTrace[index].getMethodName();
-        builder.append(convertTimestamp2Date()).append(" " + getProcessPidNum() + "-" + Thread.currentThread().getId());
+//        builder.append(convertTimestamp2Date()).append(" " + getProcessPidNum() + "-" + Thread.currentThread().getId());
+        builder.append(getProcessPidNum() + "-" + Thread.currentThread().getId());
         builder.append(" [ (").append(className).append(":").append(lineNumber).append(")#").append(methodName).append(" ] ");
         return builder.toString();
     }

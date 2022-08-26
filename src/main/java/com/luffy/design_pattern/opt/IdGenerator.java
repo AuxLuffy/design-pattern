@@ -90,6 +90,6 @@ public class IdGenerator {
         logger.info("Hello world info");
         logger.debug("Hello world debug");
         logger.trace("Hello world trace");
-        L.log("hello");
+        Logutil.d("hello");
     }
 }
