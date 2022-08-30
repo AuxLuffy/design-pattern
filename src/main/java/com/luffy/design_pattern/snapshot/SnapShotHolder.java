@@ -3,6 +3,9 @@ package com.luffy.design_pattern.snapshot;
 import java.util.Stack;
 
 /**
+ * 快照的容器类
+ * 如果要备份的数据比较大就要考虑备份增量或者考虑增量全量两种策略增加步长来备份（即，每过n次备份一次全量，中间备份增量）
+ *
  * @author sunzhangfei
  * @since 2022/8/29 11:32 上午
  */
